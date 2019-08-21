@@ -1,7 +1,5 @@
 'use strict';
 
-var crypto = require('crypto');
-
 /**
  * convert an integer to a byte array
  * @param {Integer} num
