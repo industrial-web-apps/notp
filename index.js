@@ -1,6 +1,6 @@
 'use strict';
 
-var Buffer = require('buffer');
+import { Buffer } from 'buffer';
 
 /**
  * convert an integer to a byte array
