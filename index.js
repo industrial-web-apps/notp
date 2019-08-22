@@ -1,5 +1,7 @@
 'use strict';
 
+var Buffer = require('buffer');
+
 /**
  * convert an integer to a byte array
  * @param {Integer} num
