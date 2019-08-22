@@ -16,10 +16,11 @@
     "node": "> v0.6.0"
   },
   "dependencies": {
-    "buffer": "^5.4.0"
+    "buffer": "^5.4.0",
+    "create-hmac": "^1.1.7"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
+    "mocha": "^6.2.0",
     "thirty-two": "0.0.2"
   }
 }

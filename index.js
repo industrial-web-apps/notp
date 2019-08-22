@@ -1,6 +1,7 @@
 'use strict';
 
 import { Buffer } from 'buffer';
+import createHmac from 'create-hmac';
 
 /**
  * convert an integer to a byte array
@@ -58,7 +59,7 @@ hotp.gen = function(key, opt) {
 	// Create the byte array
 	var b = new Buffer(intToBytes(counter));
 
-	var hmac = crypto.createHmac('sha1', new Buffer(key));
+	var hmac = createHmac('sha1', new Buffer(key));
 
 	// Update the HMAC with the byte array
 	var digest = hmac.update(b).digest('hex');
