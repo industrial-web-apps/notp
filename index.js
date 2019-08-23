@@ -1,7 +1,9 @@
 'use strict';
 
 import { Buffer } from 'buffer';
-var CryptoJS = require("crypto-js");
+// var CryptoJS = require("crypto-js");
+const WordArray = require('crypto-js/core').lib.WordArray;
+import { HmacSHA1 } from 'crypto-js';
 
 /**
  * convert an integer to a byte array
@@ -54,15 +56,16 @@ hotp.gen = function(key, opt) {
 	opt = opt || {};
 	var counter = opt.counter || 0;
 
-	var p = 6;
+	// var p = 6;
 
 	// Create the byte array
-	var b = new Buffer(intToBytes(counter));
-
-	CryptoJS.HmacSHA1(new Buffer(key));
+	const b = intToWords(counter);
+	// var b = new Buffer(intToBytes(counter));
+	const digest = HmacSHA1(WordArray.create(b), key).toString();
+	// CryptoJS.HmacSHA1(new Buffer(key));
 
 	// Update the HMAC with the byte array
-	var digest = hmac.update(b).digest('hex');
+	// var digest = hmac.update(b).digest('hex');
 
 	// Get byte array
 	var h = hexToBytes(digest);
