@@ -10,6 +10,24 @@ import { HmacSHA1 } from 'crypto-js';
  * @param {Integer} num
  * @return {Array} bytes
  */
+function intToWords(num) {
+	const bytes = [];
+	for (let i = 7; i >= 0; --i) {
+		bytes[i] = num & (255);
+		num = num >> 8;
+	}
+	const words = [];
+	for (let i = 0; i < bytes.length; i++) {
+		words[i >>> 2] |= bytes[i] << (24 - (i % 4) * 8);
+	}
+	return words;
+}
+
+/**
+ * convert an integer to a byte array
+ * @param {Integer} num
+ * @return {Array} bytes
+ */
 function intToBytes(num) {
 	var bytes = [];
 
